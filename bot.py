@@ -27,12 +27,13 @@ bot = Client(
            
 
 if STRING:
-    apps = [Client2,bot]
-    for app in apps:
-        app.start()
-    idle()
-    for app in apps:
-        app.stop()
-    
-else:
-    bot.run()
+    from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'STthamizhan'
+
+
+if __name__ == "__main__":
+    app.run()
