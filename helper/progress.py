@@ -61,4 +61,3 @@ def TimeFormatter(milliseconds: int) -> str:
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
     return f"{days}d, {hours}h, {minutes}m, {seconds}s, {milliseconds}ms".strip(", ")
-        
