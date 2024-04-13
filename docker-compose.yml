@@ -1,12 +1,25 @@
 version: "3.9"
+
 services:
   workerdisk:
     build: .
     environment:
       - API_ID=${API_ID}
-      - API_HASH=${HASH}
+      - API_HASH=${API_HASH}
       - TOKEN=${TOKEN}
       - DB_NAME=${DB_NAME}
       - DB_URL=${DB_URL}
       - CHANNEL=${CHANNEL}
       - ADMIN=${ADMIN}
+    # Add any other configurations for your workerdisk service
+
+  webserver:
+    image: python:3.9  # Use Python 3.9 base image
+    command: ["python3", "app.py"]  # Specify command to run the Flask app (app.py)
+    working_dir: /app  # Set working directory for the service
+    environment:
+      - FLASK_APP=app.py  # Specify the Flask app to run
+    ports:
+      - "8080:8080"  # Map port 5000 on the host to port 5000 on the container
+    volumes:
+      - ./:/app  # Mount the current directory into the container's /app directory
